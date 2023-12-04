@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from htmldemo.net/mirora/mirora/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Nov 2023 08:12:53 GMT -->
+<th:block th:insert="user/layout/head.html"></th:block>
+
+<body>
+
+
+<!-- Main Wrapper Start -->
+<div class="wrapper bg--shaft">
+    <!-- Header Area Start -->
+<th:block th:insert="user/layout/header.html"></th:block>
+    <!-- Header Area End -->
+
+    <!-- Main Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="login-register-area">
+            <div class="container">
+
+
+                    <div class="col-lg-6 register_bt" >
+                        <h2 class="heading-secondary mb--30 text-center">Register</h2>
+                        <div class="login-reg-box p-4 bg--2 login-boder">
+                            <form class="form" th:object="${user}" method="post" th:action="@{register}">
+                                <div class="form__group mb--20">
+                                    <label class="form__label" >
+                                        UserName <span>*</span>
+                                    </label>
+                                    <input type="text" class="form__input form__input--2" th:field="*{userName}" th:classappend="${#fields.hasErrors('userName')} ? 'border-danger' " aria-describedby="emailHelp"/>
+                                    <p class="error" style="color: red; font-style: italic" th:errors="*{userName}"></p>
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label" >
+                                        FullName <span>*</span>
+                                    </label>
+                                    <input type="text"  class="form__input form__input--2" th:field="*{fullName}" th:classappend="${#fields.hasErrors('fullName')} ? 'border-danger' " aria-describedby="emailHelp"/>
+                                    <p class="error" style="color: red; font-style: italic"  th:errors="*{fullName}"></p>
+                                </div>
+
+
+
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Email address <span>*</span>
+                                    </label>
+                                    <input type="text"  class="form__input form__input--2" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'border-danger' " aria-describedby="emailHelp">
+                                    <p class="error" style="color: red; font-style: italic" th:errors="*{email}"></p>
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label" >
+                                        Password <span>*</span>
+                                    </label>
+                                    <input type="password"  class="form__input form__input--2" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'border-danger' " aria-describedby="emailHelp"/>
+                                    <p class="error" style="color: red; font-style: italic" th:errors="*{password}"></p>
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="">
+                                       Phone <span>*</span>
+                                    </label>
+                                    <input type="text"  class="form__input form__input--2" th:field="*{phone}" th:classappend="${#fields.hasErrors('phone')} ? 'border-danger' " aria-describedby="emailHelp">
+                                    <p class="error" style="color: red; font-style: italic"  th:errors="*{phone}"></p>
+                                </div>
+                                <div class="form__group">
+                                    <button type="submit" class="btn btn-5 btn-style-2 text-center">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Main Wrapper End -->
+
+    <!-- Footer Start -->
+<th:block th:insert="user/layout/foorer.html"></th:block>
+
+</div>
+<!-- Main Wrapper End -->
+
+
+<!-- ************************* JS Files ************************* -->
+
+<th:block th:insert="user/layout/script.html"></th:block>
+
+</body>
+
+
+<!-- Mirrored from htmldemo.net/mirora/mirora/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Nov 2023 08:12:53 GMT -->
+</html>

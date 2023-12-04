@@ -1,0 +1,784 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+
+<th:block th:insert="user/layout/head.html"></th:block>
+
+<body>
+
+
+    <!-- Main Wrapper Start -->
+    <div class="wrapper bg--shaft">
+        <!-- Header Area Start -->
+        <th:block th:insert="user/layout/header.html"></th:block>
+        <!-- Header Area End -->
+
+        <!-- Main Content Wrapper Start -->
+        <div class="main-content-wrapper">
+            <!-- Slider area Start -->
+
+            <div class="slider-area bg--dark-5"> 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="static-slider">
+                                <div class="single-static-slide" th:each="pr:${products}">
+                                    <div class="static-slide-image" >
+                                        <img th:src="'/images/'+${pr.image}" alt="">
+                                    </div>
+                                    <div class="static-slide-text">
+                                        <h1><a th:text="${pr.productName}"></a></h1>
+                                        <p th:text="${pr.price}"></p>
+                                        <a href="">Add To Cart</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider area End -->
+
+            <!-- Promo Box area Start -->
+
+            <div class="promo-box-area border-top border-bottom ptb--40 ptb-md--30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="tweet"><i class="fa fa-twitter"></i> Check out "Alice - Multipurpose Responsive #Magento #Theme" on #Envato by @Plazathemes #Themeforest <a href="#">https://t.co/DNdhAwzm88</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Box area End -->
+
+
+            <!-- Banner area Start -->
+
+            <section class="banner-area banner-bg-2 ptb--120 ptb-sm--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="banner-box text-center">
+                                <h3 class="banner__notice">Hurry Up!</h3>
+                                <h2 class="banner__name">Hot Deal! Sale <span>20% Off</span></h2>
+                                <p class="banner__text mb--50 mb-md--20">Handmade Silver Ivory Freshwater Pearl & Rhinestone Flower Hair</p>
+                                <a href="shop.html" class="btn btn-bordered btn-style-1">Shop Now</a>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </section>      
+
+            <!-- Banner area End -->
+
+            <!-- Most Viewed Product area Start -->
+
+            <section class="mostviewed-product-area border-bottom pt--80 pb--60 pt-md--60 pb-md--50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title mb--15">
+                                <h2 class="color--white">Mostviewed Products</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="product-carousel nav-top js-product-carousel-2">
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/11-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">Moradin 25 RTA by ICLOUDCIG</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/12-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">RAVENSMOON TANK 157</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/7-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">Driptip Kryptonite</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/8-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">Reulaux RX2/3 By Wismec</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/6-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">Reulaux RX2/3</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mirora-product">
+                                    <div class="product-img single-image">
+                                        <img src="assets/img/products/diamonds/5-450x450.jpg" alt="Product" class="primary-image" />
+                                        <div class="product-img-overlay">
+                                            <span class="product-label discount">
+                                                -7%
+                                            </span>
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-transparent btn-fullwidth btn-medium btn-style-1">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <span>Cartier</span>
+                                        <h4><a href="product-details.html">SquapeX Dripper</a></h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mirora_product_action text-center position-absolute">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <p>
+                                          It is a long established fact that a reader will be distracted by the readable content...
+                                        </p>
+                                        <div class="product-action">
+                                            <a class="same-action" href="wishlist.html" title="wishlist">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                            <a class="add_cart cart-item action-cart" href="cart.html" title="wishlist"><span>Add to cart</span></a>
+                                            <a class="same-action compare-mrg" data-bs-toggle="modal" data-bs-target="#productModal" href="compare.html">
+                                                <i class="fa fa-sliders fa-rotate-90"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+
+            <!-- Most Viewed Product area End -->
+
+
+
+            <!-- Blog area Start -->
+
+            <section class="blog-area pt--80 pb--40 pt-md--60 pb-md--30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title mb--30">
+                                <h2>Form Our Blog</h2>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="blog-carousel nav-top slick-item-gutter">
+                                <article class="blog">
+                                    <a href="blog-details-image.html" class="blog__thumb">
+                                        <img src="assets/img/blog/post1-370x230.jpg" alt="Blog">
+                                    </a>
+                                    <div class="blog__content">
+                                        <div class="blog__meta">
+                                            <p class="blog__author">Post By: <a href="blog.html">HasTech</a></p>
+                                            <p class="blog__date"><a href="blog.html">20 Oct 2018</a></p>
+                                        </div>
+                                        
+                                        <h3 class="blog__title"><a href="blog-details-image.html">Mollis aliquet ante, suscipit non eget  nulla libero, vestibulum condimentum.</a></h3>
+                                        <div class="blog__text">
+                                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula.</p>
+                                            <a class="read-more" href="blog-details-image.html">Read More</a>
+                                        </div>
+                                        
+                                    </div>
+                                </article>
+                                <article class="blog">
+                                    <a href="blog-details-image.html" class="blog__thumb">
+                                        <img src="assets/img/blog/post2-370x230.jpg" alt="Blog">
+                                    </a>
+                                    <div class="blog__content">
+                                        <div class="blog__meta">
+                                            <p class="blog__author">Post By: <a href="blog.html">HasTech</a></p>
+                                            <p class="blog__date"><a href="blog.html">20 Oct 2018</a></p>
+                                        </div>
+                                        
+                                        <h3 class="blog__title"><a href="blog-details-image.html">Mollis aliquet ante, suscipit non eget  nulla libero, vestibulum condimentum.</a></h3>
+                                        <div class="blog__text">
+                                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula.</p>
+                                            <a class="read-more" href="blog-details-image.html">Read More</a>
+                                        </div>
+                                        
+                                    </div>
+                                </article>
+                                <article class="blog">
+                                    <a href="blog-details-image.html" class="blog__thumb">
+                                        <img src="assets/img/blog/post3-370x230.jpg" alt="Blog">
+                                    </a>
+                                    <div class="blog__content">
+                                        <div class="blog__meta">
+                                            <p class="blog__author">Post By: <a href="blog.html">HasTech</a></p>
+                                            <p class="blog__date"><a href="blog.html">20 Oct 2018</a></p>
+                                        </div>
+                                        
+                                        <h3 class="blog__title"><a href="blog-details-image.html">Mollis aliquet ante, suscipit non eget  nulla libero, vestibulum condimentum.</a></h3>
+                                        <div class="blog__text">
+                                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula.</p>
+                                            <a class="read-more" href="blog-details-image.html">Read More</a>
+                                        </div>
+                                        
+                                    </div>
+                                </article>
+                                <article class="blog">
+                                    <a href="blog-details-image.html" class="blog__thumb">
+                                        <img src="assets/img/blog/post4-370x230.jpg" alt="Blog">
+                                    </a>
+                                    <div class="blog__content">
+                                        <div class="blog__meta">
+                                            <p class="blog__author">Post By: <a href="blog.html">HasTech</a></p>
+                                            <p class="blog__date"><a href="blog.html">20 Oct 2018</a></p>
+                                        </div>
+                                        
+                                        <h3 class="blog__title"><a href="blog-details-image.html">Mollis aliquet ante, suscipit non eget  nulla libero, vestibulum condimentum.</a></h3>
+                                        <div class="blog__text">
+                                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula.</p>
+                                            <a class="read-more" href="blog-details-image.html">Read More</a>
+                                        </div>
+                                        
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt--30">
+                        <div class="col-12 text-center">
+                            <a  href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="btn btn-medium btn-style-2"><i class="fa fa-instagram"></i>Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog area End -->
+
+
+            <!-- Newsletter area End -->
+            
+            <div class="newsletter-area border-bottom pt--40 pb--80 pt-md--30 pb-md--60">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-9 col-lg-10">
+                            <div class="newsletter text-center">
+                                <h3 class="color--white">Join Our Newsletters Now!</h3>
+                                <p>Typi non habent claritatem insitam est usus legentis in qui facit eorum claritatem, investigationes demonstraverunt lectores legere me lius quod legunt saepius.</p>
+
+                                <form class="newsletter-form validate mt--40" action="https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-newsletter-form" name="mc-embedded-newsletter-form" target="_blank" novalidate="">
+                                    <input type="email" name="email" id="sub_email" placeholder="Enter your email address here.." class="newsletter-form__input">
+                                    <input type="submit" value="Subscribe" class="btn newsletter-btn btn-style-1">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter area End -->
+        </div>
+        <!-- Main Content Wrapper Start -->
+
+        <!-- Footer Start -->
+        <footer class="footer border-top ptb--40 ptb-md--30">
+            <div class="container">
+                <div class="row mb--40 mb-md--30">
+                    <div class="col-lg-4 col-md-6 mb-md--30">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">About Mirora</h3>
+                            <div class="widget-content mb--20">
+                                <p>Address: 123 Main Street, Anytown, <br> CA 12345 - USA.</p>
+                                <p>Phone: (012) 800 456 789</p>
+                                <p>Fax: (012) 800 456 789</p>
+                                <p>Email: Contact@plazathemes.com</p>
+                            </div>
+                            <ul class="social social-round">
+                                <li class="social__item">
+                                    <a class="social__link"  href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link"  href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link"  href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link"  href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link"  href="https://plus.google.com/" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-md--30">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Information</h3>
+                            <ul class="widget-menu">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Gift Certificates</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-sm--30">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Extras</h3>
+                            <ul class="widget-menu">
+                                <li><a href="#">Brands</a></li>
+                                <li><a href="#">Gift Certificates</a></li>
+                                <li><a href="#">Affiliate</a></li>
+                                <li><a href="#">Specials</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Returns</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Custom Products</h3>
+                            <div class="widget-product">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="assets/img/products/11-450x450.jpg" alt="products">
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <h4 class="product-title">
+                                            <a href="product-details.html" tabindex="0">Acer Aspire E 15</a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="assets/img/products/11-450x450.jpg" alt="products">
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-rating">
+                                            <span>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star theme-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                        <h4 class="product-title">
+                                            <a href="product-details.html" tabindex="0">Acer Aspire E 15</a>
+                                        </h4>
+                                        <div class="product-price-wrapper">
+                                            <span class="money">$550.00</span>
+                                            <span class="product-price-old">
+                                                <span class="money">$700.00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb--40 mb-md--30">
+                    <div class="col-12">
+                        <ul class="footer-menu">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Online Store</a></li>
+                            <li><a href="#">Promotion</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms Of Use</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">&copy; Mirora 2021 Made With <i class="fa fa-heart"></i> BY <a href="https://hasthemes.com/">HasThemes</a> </p>
+                        <img src="assets/img/others/payment.png" alt="payment">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+        <!-- Scroll To Top Start -->    
+        <a class="scroll-to-top" href="#"><i class="fa fa-angle-double-up"></i></a>
+        <!-- Scroll To Top End -->
+
+
+
+        <!-- Modal Start -->
+        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">Close</span>
+                </button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 mb-sm--20">
+                            <div class="tab-content product-thumb-large">
+                                <div id="thumb1" class="tab-pane active show fade">
+                                    <img src="assets/img/products/1-1-600x600.jpg" alt="product thumb">
+                                </div>
+                                <div id="thumb2" class="tab-pane fade">
+                                    <img src="assets/img/products/2-600x600.jpg" alt="product thumb">
+                                </div>
+                                <div id="thumb3" class="tab-pane fade">
+                                    <img src="assets/img/products/10-600x600.jpg" alt="product thumb">
+                                </div>
+                                <div id="thumb4" class="tab-pane fade">
+                                    <img src="assets/img/products/11-600x600.jpg" alt="product thumb">
+                                </div>
+                                <div id="thumb5" class="tab-pane fade">
+                                    <img src="assets/img/products/12-600x600.jpg" alt="product thumb">
+                                </div>
+                                <div id="thumb6" class="tab-pane fade">
+                                    <img src="assets/img/products/13-600x600.jpg" alt="product thumb">
+                                </div>
+                            </div>
+                            <div class="product-thumbnail">
+                                <div class="thumb-menu" id="modal-thumbmenu">
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb1" data-bs-toggle="tab" class="nav-link active">
+                                            <img src="assets/img/products/1-1-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb2" data-bs-toggle="tab" class="nav-link">
+                                            <img src="assets/img/products/2-2-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb3" data-bs-toggle="tab" class="nav-link">
+                                            <img src="assets/img/products/10-10-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb4" data-bs-toggle="tab" class="nav-link">
+                                            <img src="assets/img/products/11-11-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb5" data-bs-toggle="tab" class="nav-link">
+                                            <img src="assets/img/products/12-12-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                    <div class="thumb-menu-item">
+                                        <a href="#thumb6" data-bs-toggle="tab" class="nav-link">
+                                            <img src="assets/img/products/13-13-450x450.jpg" alt="product thumb">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="modal-box product">
+                                <h3 class="product-title">SquapeX Dripper by Stattqualm</h3>
+                                <div class="ratings mb--20">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <ul class="product-detail-list list-unstyled mb--20">
+                                    <li>Brand: <a href="#">Apple</a></li>
+                                    <li>Product Code: Watches</li>
+                                    <li>Reward Points: 600</li>
+                                    <li>Availability: In Stock</li>
+                                </ul>
+                                <div class="product-price border-bottom pb--20 mb--20">
+                                    <span class="regular-price">$100.50</span>
+                                    <span class="sale-price">$98.98</span>
+                                </div>
+                                <div class="product-options mb--20">
+                                    <h3>Available Options</h3>
+                                    <div class="form-group">
+                                        <label><sup>*</sup>Color Switch</label>
+                                        <select>
+                                            <option> --- Please Select --- </option>
+                                            <option>Black</option>
+                                            <option>Blue</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="product-action-wrapper mb--20">
+                                    <div class="product-action-top d-flex align-items-center mb--20">
+                                        <div class="quantity">
+                                            <span>Qty: </span>
+                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+                                        </div>
+                                        <button type="button" class="btn btn-medium btn-style-2 add-to-cart">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                    <div class="product-action-bottom">
+                                        <a href="wishlist.html">+Add to wishlist</a>
+                                        <a href="compare.html">+Add to compare</a>
+                                    </div>
+                                </div>  
+                                <p class="product-tags">
+                                    Tags: <a href="shop.html">Sport</a>,
+                                    <a href="shop.html">Luxury</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal End -->
+
+    </div>
+    <!-- Main Wrapper End -->
+
+
+    <!-- ************************* JS Files ************************* -->
+
+    <!-- jQuery JS -->
+     <th:block th:insert="user/layout/script.html"></th:block>
+</body>
+
+
+<!-- Mirrored from htmldemo.net/mirora/mirora/product-search.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Nov 2023 08:13:13 GMT -->
+</html>

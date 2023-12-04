@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- start head-->
+<th:block th:insert="admin/layout/head.html"></th:block>
+<!-- end head-->
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <th:block th:insert="admin/layout/navbar.html"></th:block>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+
+    <!--    end sidebstart Sidebar -->
+    <th:block th:insert="admin/layout/sidebar.html"></th:block>
+    <!--  end  Sidebar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Quản lý thể loại sản phẩm</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="https://test.warface.codegym.vn/admin/dashboard">Trang
+                                chủ</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-12 col-md-12">
+                    <div class="col-12 row mb-0 mt-2">
+                        <div class="col-12 col-md-8">
+                        </div>
+                    </div>
+                    <a
+                            href=""
+                            class="btn btn-success"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    >
+                        Thêm mới danh muc</a
+                    >
+                    <div class="row">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">X
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form action="/admin/create-category" method="post" th:object="${category}">
+                                            <input type="hidden" name="_token" value="">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Thêm mới thể loại</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="name-category">Tên thể loại (*)</label>
+                                                        <input type="text" th:field="*{categoryName}" name="name"
+                                                               class="form-control" id="name-category" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="col-4 btn btn-primary">Lưu</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Understood</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <p class="text-dark text-right" th:text="|Có  ${categories.size()} thể loại| "></p>
+
+                                </div>
+                            </div>
+
+                            <div class="card card-default text-center">
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tên danh mục</th>
+                                            <th>Trang thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="ca:${categories}">
+                                            <td th:text="${ca.categoryId}"></td>
+                                            <td th:text="${ca.categoryName}"></td>
+                                            <td th:text="${ca.status ? 'hiện' : 'ẩn'}"></td>
+                                            <td>
+                                                <a th:href="@{'/admin/edit-category/' + ${ca.categoryId}}"
+                                                   class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+
+                                                <a onclick="return confirm('Bạn chắc chắn muốn xoá?')"
+                                                   th:href="@{'/admin/delete-category/' + ${ca.categoryId}}"
+
+                                                   class="btn btn-danger"><i
+                                                        class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <nav class="text-center">
+                                        <ul class="pagination">
+
+                                            <li class="page-item disabled" aria-disabled="true"
+                                                aria-label="&laquo; Previous">
+                                                <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                            </li>
+
+
+                                            <li class="page-item active" aria-current="page"><span
+                                                    class="page-link">1</span></li>
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="">3</a>
+                                            </li>
+
+
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href=""
+                                                   rel="next" aria-label="Next &raquo;">&rsaquo;</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            </div>
+                            <div class="note-text">
+                                <p><strong>Lưu ý: </strong>Không thể xóa danh mục có sản phẩm, vui lòng chuyển sản phẩm
+                                    sang danh mục khác và tiếp tục thao tác.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:insert="admin/layout/footer.html"></th:block>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+<th:block th:insert="admin/layout/script.html"></th:block>
+
+
+</body>
+</html>

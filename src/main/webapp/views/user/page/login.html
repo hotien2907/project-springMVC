@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<th:block th:insert="user/layout/head.html"></th:block>
+
+<body>
+
+
+<!-- Main Wrapper Start -->
+<div class="wrapper bg--shaft">
+    <!-- Header Area Start -->
+    <th:block th:insert="user/layout/header.html"></th:block>
+    <!-- Header Area End -->
+
+    <!-- Main Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="login-register-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-md--40 register_bt">
+                        <h2 class="heading-secondary mb--30 text-center">Login</h2>
+                        <div class="login-reg-box p-4 bg--2 login-boder">
+                            <form class="form" action="/login" method="post" th:object="${user}">
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="username_email">
+                                        Email <span>*</span>
+                                    </label>
+                                    <input type="text" name="email" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'border-danger' " id="username_email" class="form__input form__input--2">
+                                    <p class="error" style="color: red; font-style: italic"  th:errors="*{email}"></p>
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="password">
+                                        Password <span>*</span>
+                                    </label>
+                                    <input type="password" name="password" id="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'border-danger' " class="form__input form__input--2">
+                                    <p class="error" style="color: red; font-style: italic"  th:errors="*{password}"></p>
+                                </div>
+                                <div class="form__group d-flex align-items-center">
+                                    <button type="submit" class="btn btn-5 btn-style-1 color-1">Login</button>
+                                    <div class="custom-checkbox ml--20">
+                                        <input type="checkbox" name="checked" th:checked="${checked}" class="form__checkbox" id="rememberMeCheckbox" />
+                                        <label for="rememberMeCheckbox" class="form__checkbox--label">Remember me</label>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="forgot-pass">Forgot your password?</a>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Wrapper End -->
+
+    <!-- Footer Start -->
+    <th:block th:insert="user/layout/foorer.html"></th:block>
+</div>
+<!-- Main Wrapper End -->
+
+
+<!-- ************************* JS Files ************************* -->
+
+<!-- jQuery JS -->
+
+<th:block th:insert="user/layout/script.html"></th:block>
+
+<!-- Thêm đoạn mã sau vào cuối thẻ body -->
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            var message = urlParams.get('error');
+            Swal.fire({
+                icon: 'error',
+                title: message,
+            });
+        }
+    });
+</script>
+
+<!--<script th:inline="javascript">-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        var urlParams = new URLSearchParams(window.location.search);-->
+<!--        if (urlParams.has('success')) {-->
+<!--            var message = decodeURIComponent(urlParams.get('success'));-->
+<!--            Swal.fire({-->
+<!--                icon: 'success',-->
+<!--                title: message,-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+
+</body>
+
+
+<!-- Mirrored from htmldemo.net/mirora/mirora/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Nov 2023 08:12:53 GMT -->
+</html>

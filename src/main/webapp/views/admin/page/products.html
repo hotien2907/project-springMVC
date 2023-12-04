@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layout/head.html"></th:block>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <th:block th:insert="admin/layout/navbar.html"></th:block>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a
+          href=""
+          class="brand-link"
+        >
+          <img
+            src=""
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Admin</span>
+        </a>
+
+        <!-- Sidebar -->
+        <th:block th:insert="admin/layout/sidebar.html"></th:block>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">
+                  Danh sách sản phẩm
+                  <a
+                    href=""
+                    class="btn btn-success"
+                  >
+                    Thêm mới</a
+                  >
+                </h1>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href=""
+                      >Trang chủ</a
+                    >
+                  </li>
+                </ol>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="col-12 col-md-12">
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <form
+                    action=""
+                    method="get"
+                  >
+                    <input
+                      type="hidden"
+                      name="_token"
+                      value=""
+                    />
+                    <div class="input-group">
+                      <input
+                        type="search"
+                        value=""
+                        name="keyword"
+                        class="form-control"
+                        placeholder="Tên sản phẩm"
+                        required
+                      />
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-12 col-md-3">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#modal-lg"
+                  >
+                    Tìm kiếm nâng cao
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 row mb-0 mt-2">
+                <div class="col-12 col-md-8"></div>
+                <div class="col-12 col-md-4">
+                  <p class="text-dark text-right">Có 22 sản phẩm</p>
+                </div>
+
+
+              </div>
+              <div class="card card-default">
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                    <tr>
+                      <th><input type="checkbox" /></th>
+                      <th>#</th>
+                      <th>Hình ảnh</th>
+                      <th>Tên sản phẩm</th>
+                      <th>Giá</th>
+                      <th>Danh mục</th>
+
+                      <th>Hành Động</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product: ${products}">
+                      <td>
+                        <input type="checkbox" th:value="${product.productId}" name=  "productId" />
+                      </td>
+                      <td th:text="${product.productId}"></td>
+                      <td>
+                        <img th:src="'/images/'+${product.image}" width="100" alt="Product Image" />
+                      </td>
+                      <td th:text="${product.productName}"></td>
+                      <td th:text="${product.price} + ' đ'"></td>
+                      <td th:text="${product.categoryName}"></td>
+                      <td>
+                        <a th:href="@{'/admin/edit-product/' + ${product.productId}}" class="btn btn-primary">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a th:href="@{'/admin/delete-product/' + ${product.productId}}" class="btn btn-danger"
+                           onclick="return confirm('Bạn chắc chắn muốn xoá?')">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+
+                  </table>
+                </div>
+                <!-- /.card-body -->
+
+              </div>
+                <div class="text-center">
+                  <nav>
+                    <ul class="pagination">
+                      <li th:class="${currentPage == 1 ? 'page-item disabled' : 'page-item'}">
+                        <a class="page-link" th:href="@{/admin/list-user(page=${currentPage - 1})}" aria-label="&laquo; Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+
+                      <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
+                        <a class="page-link" th:href="@{/admin/list-user(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                      </li>
+
+                      <li th:class="${currentPage == totalPages ? 'page-item disabled' : 'page-item'}">
+                        <a class="page-link" th:href="@{/admin/list-user(page=${currentPage + 1})}" aria-label="Next &raquo;">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <th:block th:insert="admin/layout/footer.html"></th:block>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+
+    <th:block th:insert="admin/layout/script.html"></th:block>
+  </body>
+</html>

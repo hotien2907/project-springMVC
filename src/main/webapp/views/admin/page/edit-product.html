@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layout/head.html"></th:block>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <th:block th:insert="admin/layout/navbar.html"></th:block>
+    <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="https://test.warface.codegym.vn/admin/dashboard" class="brand-link">
+            <img src="https://test.warface.codegym.vn/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Admin</span>
+        </a>
+
+        <!-- Sidebar -->
+        <th:block th:insert="admin/layout/sidebar.html"></th:block>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Thêm mới sản phẩm</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="">Trang
+                                chủ</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <form th:object="${productEdit}" th:action="@{'/admin/update-product/'+${productEdit.productId}}" method="post"  enctype="multipart/form-data">
+                    <input type="hidden"th:field="*{productId}" th:name="productId" >
+                    <div class="row col-12 col-md-12">
+
+                        <div class="col-12 col-md-8">
+                            <!-- general form elements -->
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Thông tin sản phẩm</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name-product">Tên sản phẩm (*)</label>
+                                        <input type="text" th:field="*{productName}" class="form-control"
+                                               id="name-product"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mô tả ngắn (*)</label>
+                                        <textarea name="desc" th:field="*{description}" class="form-control"
+                                                  rows="2"> </textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Dữ liệu sản phẩm</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="price-product" class="col-sm-2 col-form-label">Giá bán (*)
+                                            (VND)</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" th:field="*{price}" class="form-control"
+                                                   id="price-product" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="price-product" class="col-sm-2 col-form-label">Số lượng (*)
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" th:field="*{stock}" class="form-control"
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="status-product" th:field="*{status}"
+                                               class="col-sm-2 col-form-label">Trạng thái
+                                            (*)</label>
+                                        <div class="col-sm-10">
+                                            <select name="status" id="status-product" class="form-control">
+                                                <option value="1">Mới</option>
+                                                <option value="2">Like New</option>
+                                                <option value="3">Cũ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Thể loại sản phẩm</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Chọn thể loại (*)</label>
+                                        <label>
+                                            <select th:field="*{category.categoryId}" class="form-control select2">
+                                                <option th:each= "cate : ${listCategory}" th:value="${cate.categoryId}" th:text="${cate.categoryName}"></option>
+                                            </select>
+
+                                        </label>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <label>
+                                            Ảnh Sản Phẩm
+                                        </label>
+                                    </h3>
+                                    <div class="text-center">
+                                        <th:block th:if="${productEdit.image}">
+                                            <img id="existingImage" src="#" alt="Preview" th:src="@{'/images/' + ${productEdit.image}}" style="max-width: 100%">
+                                        </th:block>
+                                        <img id="previewImage" src="#" alt="Preview" th:src="@{'/img/' + ${productEdit.image}}"
+                                             style="max-width: 100%; display: none;"
+                                        >
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Chọn ảnh (*)</label>
+                                            <p>Định dạng: jpg, png, svg - Kích cỡ < 2MB</p>
+                                            <div class="input-group">
+                                                <input type="file" name="img_upload"  class="custom-file-input" id="exampleInputFile"  onchange="displayImage(this)"/>
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="col-4 btn btn-primary">Lưu</button>
+                                <a href="" class="btn btn-default">Huỷ</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:insert="admin/layout/footer.html"></th:block>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+<th:block th:insert="admin/layout/script.html"></th:block>
+<script>
+    function displayImage(input) {
+        let file = input.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('previewImage').src = e.target.result;
+                document.getElementById('previewImage').style.display = 'block';
+                document.getElementById('existingImage').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>
+</body>
+</html>

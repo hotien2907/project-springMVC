@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js" lang="zxx"  xmlns:th="http://www.thymeleaf.org">
+
+
+
+<th:block th:insert="user/layout/head.html"></th:block>
+
+<body>
+
+
+    <!-- Main Wrapper Start -->
+    <div class="wrapper bg--shaft">
+        <!-- Header Area Start -->
+        <th:block th:insert="user/layout/header.html"></th:block>
+        <!-- Header Area End -->
+
+        <!-- Breadcumb area Start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">Cart</h1>
+                        <ul class="breadcrumb justify-content-center">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="current"><a href="cart.html">Cart</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcumb area End -->
+
+        <!-- Main content wrapper start -->
+
+        <div class="main-content-wrapper">
+            <div class="cart-area pt--40 pb--80 pt-md--30 pb-md--60">
+                <div class="container">
+                    <div class="cart-wrapper bg--2 mb--80 mb-md--60">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Cart Area Start -->
+                                <form action="#" class="form cart-form">
+                                    <div class="cart-table table-content table-responsive">
+                                        <table class="table mb--30">
+                                            <thead>
+                                                <tr>
+                                                    <th>remove</th>
+                                                    <th>Images</th>
+                                                    <th>Product</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="ca:${carts}">
+                                                <td>
+                                                    <a class="delete" th:href="@{'/cart/delete-cart/' + ${ca.getId()}}"
+                                                       onclick="return confirm('Bạn chắc chắn muốn xoá?')">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                        <a href="product-details.html">
+                                                            <img th:src="@{'/images/'+${ca.product.image}}" alt="product">
+                                                        </a>
+                                                    </td>
+                                                    <td class="wide-column">
+                                                        <h3><a href="product-details.html" th:text="${ca.product.productName}"></a></h3>
+                                                    </td>
+                                                    <td class="cart-product-price"><strong th:text="${ca.product.price}"></strong></td>
+                                                    <td>
+                                                        <div class="quantity">
+                                                            <input type="number" class="quantity-input"  th:value="${ca.quantity}" min="1">
+                                                            <p th:text="${ca.quantity}"></p>
+                                                        </div>
+                                                    </td>
+                                                <td class="cart-product-price">
+                                                    <strong th:text="${ca.product.price * ca.quantity}"></strong>
+                                                </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 text-md-right">
+                                            <div class="cart-btn-group">
+                                                <a href="shop.html" class="btn btn-medium btn-style-3">Update Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Cart Area End --> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-page-total-wrapper">
+                        <div class="row justify-content-end">
+                            <div class="col-xl-6 col-lg-8 col-md-10">
+                                <div class="cart-page-total bg--dark-3">
+                                    <h2>Cart Totals</h2>
+                                    <div class="cart-calculator-table table-content table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr class="cart-subtotal">
+                                                    <th>Subtotal</th>
+                                                    <td><span class="price-ammount" th:text="${total}"></span></td>
+                                                </tr>
+                                                <tr class="cart-total">
+                                                    <th>TOTAL</th>
+                                                    <td><span class="price-ammount" th:text="${total}"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a href="/check-out" class="btn btn-medium btn-style-3">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+
+        <!-- Main content wrapper end -->
+
+        <!-- Footer Start -->
+        <th:block th:insert="user/layout/foorer.html"></th:block>
+
+    </div>
+    <!-- Main Wrapper End -->
+
+
+    <!-- ************************* JS Files ************************* -->
+
+    <!-- jQuery JS -->
+    <th:block th:insert="user/layout/script.html"></th:block>
+
+</body>
+
+
+<!-- Mirrored from htmldemo.net/mirora/mirora/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Nov 2023 08:12:55 GMT -->
+</html>

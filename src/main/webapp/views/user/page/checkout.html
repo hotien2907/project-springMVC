@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="user/layout/head.html"></th:block>
+
+<body>
+    <!-- Main Wrapper Start -->
+    <div class="wrapper bg--shaft">
+        <!-- Header Area Start -->
+        <th:block th:insert="user/layout/header.html"></th:block>
+        <!-- Header Area End -->
+
+        <!-- Breadcumb area Start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">Checkout</h1>
+                        <ul class="breadcrumb justify-content-center">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="current"><a href="checkout.html">Checkout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcumb area End -->
+
+        <!-- Main content wrapper start -->
+        <div class="main-content-wrapper">
+            <div class="checkout-area pt--40 pb--80 pt-md--30 pb-md--60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- User Action Start -->
+                            <div class="user-actions">
+                                <div class="row">
+                                    <div class="col-12">
+                                            <h3><i class="fa fa-cube"></i> Have A Coupon? <span class="expand_action" data-attr="#coupon_info">Click Here To Enter Your Code.</span></h3>
+                                            <div id="coupon_info" class="user-actions__form user-actions--coupon hide-in-default">
+                                                <form action="#" class="form">
+                                                    <div class="form__group d-flex">
+                                                        <input type="text" name="coupon" id="coupon" class="form__input form__input--2 form__input--w285 mr--20" placeholder="Coupon Code">
+                                                        <button type="submit" class="btn btn-medium btn-style-3">Apply Coupon</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- User Action End -->
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Checkout Area Start -->
+                            <div class="checkout-wrapper bg--2">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout-title">
+                                            <h2>Billing Details</h2>
+                                        </div>
+                                        <div class="checkout-form">
+                                            <form action="/create-order" method="post" th:object="${userInfo}">
+                                                <div class="form-row mb--30">
+                                                    <div class="form__group col-md-6 mb-sm--30">
+                                                        <label for="billing_company" class="form__label" >FullName*</label>
+                                                        <input  th:text="*{recipientName}" type="text" name="recipientName" id="billing_company" class="form__input form__input--2">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row mb--30">
+                                                    <div class="form__group col-md-6 mb-sm--30">
+                                                        <label for="billing_phone" class="form__label" >Address*</label>
+                                                        <input th:text="*{address}" type="text" name="address" id="billing_phone" class="form__input form__input--2">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row mb--30">
+                                                    <div class="form__group col-md-6 mb-sm--30">
+                                                        <label for="billing_phone" class="form__label" >Phone*</label>
+                                                        <input th:text="*{phone}" type="text" name="phone" id="" class="form__input form__input--2">
+                                                    </div>
+                                                </div>
+                                                <div class="payment-btn-group">
+                                                    <button type="submit" class="btn btn-style-3">Place Order</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mt-md--30">
+                                        <div class="order-details">
+                                            <h3 class="heading-tertiary">Your Order</h3>
+                                            <div class="order-table table-content table-responsive mb--30">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Product</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="ca:${carts}">
+                                                            <td th:text="${ca.product.productName}"><strong th:text="${ca.quantity}"></strong></td>
+                                                            <td th:text="${ca.product.price*ca.quantity}"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr class="order-total">
+                                                            <th>Order Total</th>
+                                                            <td><span class="order-total-ammount" th:text="${total}"></span></td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                            <div class="checkout-payment">
+                                                <form action="#" class="payment-form">
+                                                    <div class="payment-group">
+                                                        <div class="custom-radio payment-radio">
+                                                            <input type="radio" name="payment-method" id="cheque" checked>
+                                                            <label class="payment-label" for="cheque">Cheque Payment</label>
+                                                        </div>
+                                                        <div class="payment-info">
+                                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment-group">
+                                                        <div class="custom-radio payment-radio">
+                                                            <input type="radio" name="payment-method" id="cash">
+                                                            <label class="payment-label" for="cash">Cash On Delivery</label>
+                                                        </div>
+                                                        <div class="payment-info">
+                                                            <p>Pay with cash upon delivery.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="payment-group">
+                                                        <div class="custom-checkbox">
+                                                            <input type="checkbox" name="termscondition" id="termscondition" class="form__checkbox">
+                                                            
+                                                            <label for="termscondition" class="terms-condition-label payment-label">I have read and agree to the website <a href="index.html">terms and conditions.</a></label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Checkout Area End -->
+                        </div>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <!-- Main content wrapper end -->
+
+        <!-- Footer Start -->
+        <th:block th:insert="user/layout/foorer.html"></th:block>
+    </div>
+    <!-- Main Wrapper End -->
+
+
+    <!-- ************************* JS Files ************************* -->
+
+    <th:block th:insert="user/layout/script.html"></th:block>
+
+</body>
+
+
+
+</html>
