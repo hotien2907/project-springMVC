@@ -1,9 +1,7 @@
 package com.example.controller.usercotroller;
-
 import com.example.dto.request.UserLoginDto;
 import com.example.dto.request.UserRegisterDto;
 import com.example.dto.response.RespUser;
-import com.example.modle.entity.Cart;
 import com.example.service.CartService;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
-
 @Controller
 public class UserController {
     @Autowired

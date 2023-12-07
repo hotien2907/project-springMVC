@@ -10,4 +10,5 @@ public interface CommonDao {
 
  List<Product> sortProduct (int value);
  List<Product> productRelated(int idCategory , int idProduct);
+    List<Product>findAllProductPage(int startNumber, int size);
 }

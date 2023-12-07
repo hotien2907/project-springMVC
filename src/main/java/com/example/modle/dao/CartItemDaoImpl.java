@@ -108,14 +108,14 @@ public class CartItemDaoImpl implements  CartItemDao {
     }
 
     @Override
-    public Boolean updateQty(Integer qty, Integer idCart) {
+    public Boolean updateQty(Integer qty, Integer idCartItem) {
         Boolean isCheck = false;
         Connection connection = null;
         try {
             connection = ConnectionDB.openConnection();
             CallableStatement callableStatement = connection.prepareCall("{call PROC_UPDATE_QUANTITY_CART_ITEM(?,?)}");
             callableStatement.setInt(1, qty );
-            callableStatement.setInt(2,idCart);
+            callableStatement.setInt(2,idCartItem);
             int check = callableStatement.executeUpdate();
             if (check > 0 ) {
                 isCheck = true ;

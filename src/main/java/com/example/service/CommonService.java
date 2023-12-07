@@ -13,5 +13,6 @@ public interface CommonService {
     List<RespProductDto>sortProduct(int value);
 
     List<RespProductDto> productRelated(int idCategory , int idProduct);
+    List<RespProductDto>findAllProductPage(int startNumber, int size);
 
 }

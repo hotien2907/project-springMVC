@@ -1,9 +1,13 @@
 package com.example.controller.admincontroller;
+
 import com.example.dto.request.ProductDto;
 import com.example.dto.response.RespCategoryDto;
 import com.example.dto.response.RespProductDto;
+import com.example.dto.response.RespUser;
 import com.example.modle.entity.Category;
+import com.example.modle.entity.Product;
 import com.example.service.CategoryService;
+import com.example.service.CommonService;
 import com.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,12 +34,21 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    CommonService commonService;
+
     @GetMapping("/list-product")
-    public String listProduct(Model model) {
-        List<RespProductDto> products = productService.findAll();
-        model.addAttribute("products", products);
+    public String listProduct(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
+        List<RespProductDto> product1 = productService.findAll();
+        List<RespProductDto> products = commonService.findAllProductPage(page, size);
+        int totalProduct = product1.size();
+        int totalPages = (int) Math.ceil((double) totalProduct / size);
+        model.addAttribute("listProduct", products);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
         return "admin/page/products";
     }
+
 
     @GetMapping("/add-product")
     public String addProduct(Model model) {
@@ -44,15 +57,16 @@ public class ProductController {
         model.addAttribute("product", product);
         return "admin/page/create_product";
     }
+
     @PostMapping("/create-product")
     public String createProduct(@ModelAttribute("product") ProductDto product,
                                 @RequestParam("img_upload") MultipartFile file,
                                 HttpServletRequest request) {
         // xư ly upload file lên server
         String fileName = file.getOriginalFilename();
-        File fileLocal = new File(pathUpload+fileName);
+        File fileLocal = new File(pathUpload + fileName);
         // kiểm tra thư mục, nếu chưa có thì tạo
-        if(!fileLocal.exists()){
+        if (!fileLocal.exists()) {
             fileLocal.mkdir();
         }
         try {
@@ -76,7 +90,7 @@ public class ProductController {
     public String edit(@PathVariable("id") int id, Model model) {
         model.addAttribute("listCategory", categoryService.getAll());
         model.addAttribute("productEdit", productService.findById(id));
-        System.out.println( productService.findById(id));
+        System.out.println(productService.findById(id));
         return "admin/page/edit-product";
     }
 

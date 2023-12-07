@@ -118,7 +118,6 @@
                   <table class="table table-head-fixed text-nowrap">
                     <thead>
                     <tr>
-                      <th><input type="checkbox" /></th>
                       <th>#</th>
                       <th>Hình ảnh</th>
                       <th>Tên sản phẩm</th>
@@ -131,17 +130,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="product: ${products}">
-                      <td>
-                        <input type="checkbox" th:value="${product.productId}" name=  "productId" />
-                      </td>
+                    <tr th:each="product: ${listProduct}">
+<!--                      <td>-->
+<!--                        <input type="checkbox" th:value="${product.productId}" name=  "productId" />-->
+<!--                      </td>-->
                       <td th:text="${product.productId}"></td>
                       <td>
                         <img th:src="'/images/'+${product.image}" width="100" alt="Product Image" />
                       </td>
                       <td th:text="${product.productName}"></td>
                       <td th:text="${product.price} + ' đ'"></td>
-                      <td th:text="${product.categoryName}"></td>
+                      <td th:text="${product.category.categoryName}"></td>
                       <td>
                         <a th:href="@{'/admin/edit-product/' + ${product.productId}}" class="btn btn-primary">
                           <i class="fa fa-edit"></i>
@@ -162,23 +161,27 @@
                 <div class="text-center">
                   <nav>
                     <ul class="pagination">
+                      <!-- Previous Button -->
                       <li th:class="${currentPage == 1 ? 'page-item disabled' : 'page-item'}">
-                        <a class="page-link" th:href="@{/admin/list-user(page=${currentPage - 1})}" aria-label="&laquo; Previous">
+                        <a class="page-link" th:href="@{/admin/list-product(page=${currentPage - 1})}" aria-label="&laquo; Previous">
                           <span aria-hidden="true">&laquo;</span>
                         </a>
                       </li>
 
+                      <!-- Page Numbers -->
                       <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
-                        <a class="page-link" th:href="@{/admin/list-user(page=${pageNumber})}" th:text="${pageNumber}"></a>
+                        <a class="page-link" th:href="@{/admin/list-product(page=${pageNumber})}" th:text="${pageNumber}"></a>
                       </li>
 
+                      <!-- Next Button -->
                       <li th:class="${currentPage == totalPages ? 'page-item disabled' : 'page-item'}">
-                        <a class="page-link" th:href="@{/admin/list-user(page=${currentPage + 1})}" aria-label="Next &raquo;">
+                        <a class="page-link" th:href="@{/admin/list-product(page=${currentPage + 1})}" aria-label="Next &raquo;">
                           <span aria-hidden="true">&raquo;</span>
                         </a>
                       </li>
                     </ul>
                   </nav>
+
                 </div>
 
             </div>

@@ -50,5 +50,13 @@ public class CommonServiceImpl implements CommonService{
                 .collect(Collectors.toList());
 
     }
+    @Override
+    public List<RespProductDto> findAllProductPage(int startNumber, int size) {
+        List <Product> products =commonDao.findAllProductPage(startNumber,size);
+        return
+                products.stream()
+                        .map(pr -> modelMapper.map(pr, RespProductDto.class))
+                        .collect(Collectors.toList());
+    }
 
 }

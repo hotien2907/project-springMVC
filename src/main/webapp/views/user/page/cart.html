@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <!-- Cart Area Start -->
-                                <form action="#" class="form cart-form">
+                                <form action="/cart/update-cart" method="post" class="form cart-form">
                                     <div class="cart-table table-content table-responsive">
                                         <table class="table mb--30">
                                             <thead>
@@ -72,8 +72,8 @@
                                                     <td class="cart-product-price"><strong th:text="${ca.product.price}"></strong></td>
                                                     <td>
                                                         <div class="quantity">
-                                                            <input type="number" class="quantity-input"  th:value="${ca.quantity}" min="1">
-                                                            <p th:text="${ca.quantity}"></p>
+                                                            <input type="number" class="quantity-input" th:name="quantity" th:value="${ca.quantity}" min="1">
+                                                            <input type="hidden" th:name="id" th:value="${ca.getId()}">
                                                         </div>
                                                     </td>
                                                 <td class="cart-product-price">
@@ -89,7 +89,7 @@
                                     <div class="row">
                                         <div class="col-12 text-md-right">
                                             <div class="cart-btn-group">
-                                                <a href="shop.html" class="btn btn-medium btn-style-3">Update Cart</a>
+                                                <button type="submit" class="btn btn-medium btn-style-3">Update Cart</button>
                                             </div>
                                         </div>
                                     </div>

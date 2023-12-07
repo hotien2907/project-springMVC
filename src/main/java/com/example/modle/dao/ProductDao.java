@@ -7,4 +7,5 @@ import java.util.List;
 public interface ProductDao extends IGenericDao<Product,Integer> {
     List<Product> getProductFeatured();
 
+
 }

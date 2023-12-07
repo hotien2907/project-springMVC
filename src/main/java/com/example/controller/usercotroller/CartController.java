@@ -64,6 +64,29 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @GetMapping("/cart-home/{productId}")
+    public String postCartHome(@PathVariable("productId") Integer productId,
+                               @RequestParam(name = "quantity", defaultValue = "1") Integer quantity) {
+        ModelMapper modelMapper = new ModelMapper();
+        RespProductDto productDto = productService.findById(productId);
+        CartItem existingCartItem = cartItemService.findById(productId);
+
+        if (existingCartItem != null) {
+            int newQty = existingCartItem.getQuantity() + quantity;
+            System.out.println(newQty);
+            int idCartItem = existingCartItem.getId();
+            System.out.println(idCartItem);
+            cartItemService.updateQty(newQty, idCartItem);
+        } else {
+            CartItem cartItem = new CartItem();
+            cartItem.setProduct(modelMapper.map(productDto, Product.class));
+            cartItem.setQuantity(quantity);
+            cartItemService.create(cartItem);
+        }
+
+        return "redirect:/cart";
+    }
+
 
 
     @GetMapping("/delete-cart/{id}")
@@ -74,4 +97,14 @@ public class CartController {
         }
         return "user/page/cart";
     }
+
+    @PostMapping("/update-cart")
+    public String updateCart(@RequestParam("quantity") Integer quantity, @RequestParam("id") Integer id) {
+        Boolean isUpdate = cartItemService.updateQty(quantity, id);
+        if (isUpdate) {
+            return "redirect:/cart";
+        }
+        return "user/page/cart";
+    }
+
 }

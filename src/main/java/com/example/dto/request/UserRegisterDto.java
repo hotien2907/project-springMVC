@@ -1,7 +1,6 @@
 package com.example.dto.request;
 import lombok.*;
 import org.springframework.validation.Errors;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

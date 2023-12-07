@@ -131,5 +131,33 @@ public class CommonDaoImpl implements CommonDao {
         return list;
     }
 
+    @Override
+    public List<Product> findAllProductPage(int startNumber, int size) {
+        Connection connection = null;
+        List<Product> list = new ArrayList<>();
+        connection = ConnectionDB.openConnection();
+        try {
+            CallableStatement callableStatement = connection.prepareCall("{CALL PROC_FIND_PRODUCT_BY_PAGE(?,?)}");
+            callableStatement.setInt(1, startNumber);
+            callableStatement.setInt(2, size);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Product product = new Product();
+                product.setProductId(rs.getInt("productId"));
+                product.setProductName(rs.getString("productName"));
+                product.setPrice(rs.getDouble("price"));
+                product.setImage(rs.getString("image"));
+                Category category = categoryDao.findById(rs.getInt("categoryId"));
+                product.setCategory(category);
+                list.add(product);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            ConnectionDB.closeConnection(connection);
+        }
+        return list;
+    }
 
 }
